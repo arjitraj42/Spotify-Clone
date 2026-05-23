@@ -23,7 +23,7 @@ export default function Register() {
     setError('');
 
     try {
-      const response = await axios.post('/api/auth/register', {
+      const response = await axios.post('https://spotify-clone-mz14.onrender.com/api/auth/register', {
         username: name,
         email,
         password,

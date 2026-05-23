@@ -23,7 +23,7 @@ function AppContent() {
 
   useEffect(() => {
     // Check if we are already logged in via cookie on initial load
-    axios.get('/api/auth/me').then(res => {
+    axios.get('https://spotify-clone-mz14.onrender.com/api/auth/me').then(res => {
       if (res.data.user) {
         setUser(res.data.user);
       }
@@ -37,12 +37,12 @@ function AppContent() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      axios.get('/api/user/likes').then(res => {
+      axios.get('https://spotify-clone-mz14.onrender.com/api/user/likes').then(res => {
         setLikedMusicIds(res.data.likedMusic.map(m => typeof m === 'object' ? m._id : m));
         setLikedAlbumIds(res.data.likedAlbums.map(a => typeof a === 'object' ? a._id : a));
       }).catch(err => console.error("Failed to fetch likes", err));
 
-      axios.get('/api/playlist/my').then(res => {
+      axios.get('https://spotify-clone-mz14.onrender.com/api/playlist/my').then(res => {
         setMyPlaylists(res.data.playlists);
       }).catch(err => console.error("Failed to fetch playlists", err));
     }

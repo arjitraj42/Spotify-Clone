@@ -12,7 +12,7 @@ export default function Topbar() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/api/auth/logout');
+      await axios.post('https://spotify-clone-mz14.onrender.com/api/auth/logout');
       logout();
       setIsLogoutModalOpen(false);
       navigate('/login');

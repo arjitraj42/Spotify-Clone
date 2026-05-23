@@ -17,7 +17,7 @@ export default function Home() {
 
     const fetchAlbumsAndMusic = async () => {
       try {
-        const albumResponse = await axios.get('/api/music/album');
+        const albumResponse = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/album');
         const fetchedAlbums = albumResponse.data.albums.map((album) => ({
           _id: album._id,
           name: album.title,
@@ -26,7 +26,7 @@ export default function Home() {
         }));
         setAlbums(fetchedAlbums);
 
-        const musicResponse = await axios.get('/api/music/');
+        const musicResponse = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/');
         const fetchedMusic = musicResponse.data.music.map((m) => ({
           ...m,
           coverUrl: `https://picsum.photos/seed/${m._id}/300/300` // Use deterministic image

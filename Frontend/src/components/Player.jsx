@@ -53,7 +53,7 @@ export default function Player() {
   const toggleLikeTrack = async () => {
     if (!currentTrack) return;
     try {
-      const response = await axios.post(`/api/user/like/music/${currentTrack._id}`);
+      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/user/like/music/${currentTrack._id}`);
       setLikedMusicIds(response.data.likedMusic);
     } catch (err) {
       console.error("Failed to like track", err);
