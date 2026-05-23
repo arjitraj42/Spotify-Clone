@@ -21,7 +21,7 @@ export default function Library() {
     const fetchMyLibrary = async () => {
       try {
         const albumResponse = await axios.get('/api/music/album');
-        const filteredAlbums = albumResponse.data.albums
+        const filteredAlbums = (albumResponse.data.albums || [])
           .filter(album => album.artist?._id === user._id || album.artist?.username === user.username)
           .map((album) => ({
             _id: album._id,
@@ -32,7 +32,7 @@ export default function Library() {
         setMyAlbums(filteredAlbums);
 
         const musicResponse = await axios.get('/api/music/');
-        const filteredMusic = musicResponse.data.music
+        const filteredMusic = (musicResponse.data.music || [])
           .filter(m => m.artist?._id === user._id || m.artist?.username === user.username)
           .map((m) => ({
             ...m,
@@ -41,13 +41,13 @@ export default function Library() {
         setMyMusic(filteredMusic);
 
         const playlistRes = await axios.get('/api/playlist/my');
-        setMyPlaylists(playlistRes.data.playlists);
+        setMyPlaylists(playlistRes.data.playlists || []);
 
         const likesRes = await axios.get('/api/user/likes');
-        setLikedMusic(likesRes.data.likedMusic.map(m => ({
+        setLikedMusic((likesRes.data.likedMusic || []).map(m => ({
           ...m, coverUrl: `https://picsum.photos/seed/${m._id}/300/300`
         })));
-        setLikedAlbums(likesRes.data.likedAlbums.map(a => ({
+        setLikedAlbums((likesRes.data.likedAlbums || []).map(a => ({
           ...a, coverUrl: `https://picsum.photos/seed/${a._id}/300/300`, name: a.title, artist: a.artist?.username || 'Unknown Artist'
         })));
 

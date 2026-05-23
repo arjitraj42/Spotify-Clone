@@ -32,13 +32,13 @@ export default function ArtistDashboard() {
       console.log('Current user:', user);
       
       // Filter by username, but default to all if user.username isn't found
-      const myMusic = response.data.music.filter(m => {
+      const myMusic = (response.data.music || []).filter(m => {
         if (!user.username) return true; // fallback if state is missing username
         return m.artist?.username === user.username;
       });
       
       // If the filter returns nothing, maybe just show everything for testing
-      setAllMusic(myMusic.length > 0 ? myMusic : response.data.music);
+      setAllMusic(myMusic.length > 0 ? myMusic : (response.data.music || []));
     } catch (err) {
       console.error("Failed to fetch music", err);
     }

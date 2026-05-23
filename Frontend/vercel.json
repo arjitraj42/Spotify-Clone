@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:match*",
-      "destination": "https://spotify-clone-mz14.onrender.com/api/:match*"
+      "source": "/api/(.*)",
+      "destination": "https://spotify-clone-mz14.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
