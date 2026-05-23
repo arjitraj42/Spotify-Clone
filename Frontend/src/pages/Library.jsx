@@ -20,7 +20,7 @@ export default function Library() {
 
     const fetchMyLibrary = async () => {
       try {
-        const albumResponse = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/album');
+        const albumResponse = await axios.get('/api/music/album');
         const filteredAlbums = (albumResponse.data.albums || [])
           .filter(album => album.artist?._id === user._id || album.artist?.username === user.username)
           .map((album) => ({
@@ -31,7 +31,7 @@ export default function Library() {
           }));
         setMyAlbums(filteredAlbums);
 
-        const musicResponse = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/');
+        const musicResponse = await axios.get('/api/music/');
         const filteredMusic = (musicResponse.data.music || [])
           .filter(m => m.artist?._id === user._id || m.artist?.username === user.username)
           .map((m) => ({
@@ -40,10 +40,10 @@ export default function Library() {
           }));
         setMyMusic(filteredMusic);
 
-        const playlistRes = await axios.get('https://spotify-clone-mz14.onrender.com/api/playlist/my');
+        const playlistRes = await axios.get('/api/playlist/my');
         setMyPlaylists(playlistRes.data.playlists || []);
 
-        const likesRes = await axios.get('https://spotify-clone-mz14.onrender.com/api/user/likes');
+        const likesRes = await axios.get('/api/user/likes');
         setLikedMusic((likesRes.data.likedMusic || []).map(m => ({
           ...m, coverUrl: `https://picsum.photos/seed/${m._id}/300/300`
         })));

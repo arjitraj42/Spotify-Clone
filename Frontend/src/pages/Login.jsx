@@ -21,8 +21,7 @@ export default function Login() {
     setError('');
     
     try {
-      console.log("ATTEMPTING LOGIN TO: https://spotify-clone-mz14.onrender.com/api/auth/login");
-      const response = await axios.post('https://spotify-clone-mz14.onrender.com/api/auth/login', {
+      const response = await axios.post('/api/auth/login', {
         email: email,
         username: email,
         password

@@ -16,8 +16,8 @@ export default function PlaylistModals() {
   const handleCreate = async () => {
     if (!newTitle.trim()) return;
     try {
-      await axios.post('https://spotify-clone-mz14.onrender.com/api/playlist/create', { title: newTitle });
-      const playlistRes = await axios.get('https://spotify-clone-mz14.onrender.com/api/playlist/my');
+      await axios.post('/api/playlist/create', { title: newTitle });
+      const playlistRes = await axios.get('/api/playlist/my');
       setMyPlaylists(playlistRes.data.playlists);
       setCreatePlaylistModalOpen(false);
       setNewTitle('');
@@ -28,7 +28,7 @@ export default function PlaylistModals() {
 
   const handleAddToPlaylist = async (playlistId) => {
     try {
-      await axios.post(`https://spotify-clone-mz14.onrender.com/api/playlist/${playlistId}/add`, { musicId: trackToAdd });
+      await axios.post(`/api/playlist/${playlistId}/add`, { musicId: trackToAdd });
       setTrackToAdd(null);
     } catch (err) {
       console.error("Failed to add to playlist", err);

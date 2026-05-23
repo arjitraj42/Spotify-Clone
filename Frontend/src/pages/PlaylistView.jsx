@@ -16,7 +16,7 @@ export default function PlaylistView() {
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
-        const response = await axios.get('https://spotify-clone-mz14.onrender.com/api/playlist/my');
+        const response = await axios.get('/api/playlist/my');
         const found = response.data.playlists.find(p => p._id === playlistId);
         if (found) {
           setPlaylist(found);
@@ -48,7 +48,7 @@ export default function PlaylistView() {
   const toggleLikeTrack = async (e, trackId) => {
     e.stopPropagation();
     try {
-      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/user/like/music/${trackId}`);
+      const response = await axios.post(`/api/user/like/music/${trackId}`);
       setLikedMusicIds(response.data.likedMusic);
     } catch (err) {
       console.error("Failed to like track", err);
@@ -58,7 +58,7 @@ export default function PlaylistView() {
   const removeFromPlaylist = async (e, trackId) => {
     e.stopPropagation();
     try {
-      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/playlist/${playlistId}/remove`, { musicId: trackId });
+      const response = await axios.post(`/api/playlist/${playlistId}/remove`, { musicId: trackId });
       // Update local state to remove the track
       setPlaylist(prev => ({
         ...prev,
@@ -71,7 +71,7 @@ export default function PlaylistView() {
 
   const fetchAvailableMusic = async () => {
     try {
-      const res = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/');
+      const res = await axios.get('/api/music/');
       setAvailableMusic(res.data.music);
       setIsAdding(true);
     } catch (err) {
@@ -81,7 +81,7 @@ export default function PlaylistView() {
 
   const addToPlaylist = async (trackId) => {
     try {
-      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/playlist/${playlistId}/add`, { musicId: trackId });
+      const response = await axios.post(`/api/playlist/${playlistId}/add`, { musicId: trackId });
       // Update local state
       const trackToAdd = availableMusic.find(m => m._id === trackId);
       if (trackToAdd && !playlist.music.some(m => m._id === trackId)) {

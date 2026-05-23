@@ -27,7 +27,7 @@ export default function ArtistDashboard() {
 
   const fetchMyMusic = async () => {
     try {
-      const response = await axios.get('https://spotify-clone-mz14.onrender.com/api/music/');
+      const response = await axios.get('/api/music/');
       console.log('Fetched music:', response.data.music);
       console.log('Current user:', user);
       
@@ -57,7 +57,7 @@ export default function ArtistDashboard() {
 
     try {
       setUploadStatus('Uploading...');
-      await axios.post('https://spotify-clone-mz14.onrender.com/api/music/upload', formData, {
+      await axios.post('/api/music/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setUploadStatus('Music uploaded successfully!');
@@ -80,7 +80,7 @@ export default function ArtistDashboard() {
 
     try {
       setAlbumStatus('Creating album...');
-      await axios.post('https://spotify-clone-mz14.onrender.com/api/music/album', {
+      await axios.post('/api/music/album', {
         title: albumTitle,
         music: selectedMusicIds
       });

@@ -14,10 +14,10 @@ export default function AlbumView() {
   useEffect(() => {
     const fetchAlbum = async () => {
       try {
-        const response = await axios.get(`https://spotify-clone-mz14.onrender.com/api/music/album/${albumId}`);
+        const response = await axios.get(`/api/music/album/${albumId}`);
         setAlbum(response.data.album);
         
-        const playlistRes = await axios.get('https://spotify-clone-mz14.onrender.com/api/playlist/my');
+        const playlistRes = await axios.get('/api/playlist/my');
         setMyPlaylists(playlistRes.data.playlists);
       } catch (err) {
         console.error('Failed to fetch album or playlists', err);
@@ -47,7 +47,7 @@ export default function AlbumView() {
 
   const toggleLikeAlbum = async () => {
     try {
-      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/user/like/album/${album._id}`);
+      const response = await axios.post(`/api/user/like/album/${album._id}`);
       setLikedAlbumIds(response.data.likedAlbums);
     } catch (err) {
       console.error("Failed to like album", err);
@@ -57,7 +57,7 @@ export default function AlbumView() {
   const toggleLikeTrack = async (e, trackId) => {
     e.stopPropagation();
     try {
-      const response = await axios.post(`https://spotify-clone-mz14.onrender.com/api/user/like/music/${trackId}`);
+      const response = await axios.post(`/api/user/like/music/${trackId}`);
       setLikedMusicIds(response.data.likedMusic);
     } catch (err) {
       console.error("Failed to like track", err);
