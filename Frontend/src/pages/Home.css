@@ -1,0 +1,175 @@
+.home-page {
+  padding-bottom: 100px; /* space for player */
+}
+
+.greeting {
+  margin-bottom: 24px;
+}
+
+.greeting h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.grid-cards-small {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card-small {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.card-small:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.card-small img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.card-small h4 {
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.play-btn-small, .play-btn-large {
+  position: absolute;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 8px rgba(0,0,0,0.3);
+}
+
+.card-small .play-btn-small {
+  right: 16px;
+  width: 40px;
+  height: 40px;
+}
+
+.card-small:hover .play-btn-small {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.section-title h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.section-title h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.see-all {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.see-all:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.grid-cards-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.card-large {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: rgba(24, 24, 24, 0.5);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card-large:hover {
+  background-color: rgba(40, 40, 40, 0.8);
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-large .play-btn-large {
+  bottom: 8px;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+}
+
+.card-large:hover .play-btn-large {
+  opacity: 1;
+  transform: translateY(-8px);
+}
+
+.card-large h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.shadow-glow:hover {
+  box-shadow: 0 0 15px var(--primary-hover);
+}

@@ -20,10 +20,12 @@ async function createMusic(req, res) {
             file.buffer.toString("base64")
         );
 
+        const artistId = req.user._id || req.user.id;
+
         const music = await musicModel.create({
             uri: result.url,
             title,
-            artist: req.user._id,
+            artist: artistId,
         });
 
         res.status(201).json({
@@ -42,10 +44,11 @@ async function createAlbum(req, res) {
 
     
         const { title, music} = req.body;
+        const artistId = req.user._id || req.user.id;
 
         const album = await albumModel.create({
             title,
-            artist: req.user._id,
+            artist: artistId,
             music: music,
         });
 

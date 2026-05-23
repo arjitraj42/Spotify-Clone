@@ -1,0 +1,173 @@
+.album-view {
+  padding-bottom: 100px;
+}
+
+.album-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 24px 0;
+}
+
+.album-cover-large {
+  width: 232px;
+  height: 232px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.album-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-type {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.album-title {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+.album-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.artist-name-bold {
+  font-weight: 700;
+}
+
+.album-actions {
+  padding: 24px 0;
+}
+
+.play-btn-huge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.play-btn-huge:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-hover);
+}
+
+.tracks-container {
+  margin-top: 16px;
+}
+
+.tracks-header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.col-hashtag {
+  width: 48px;
+  text-align: center;
+  position: relative;
+}
+
+.col-title {
+  flex: 1;
+}
+
+.col-time {
+  width: 100px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.track-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.track-row:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.track-row .track-play-icon {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.track-row:hover .track-index, .track-row:hover .playing-bars {
+  opacity: 0;
+}
+
+.track-row:hover .track-play-icon {
+  display: block;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.track-artist {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+/* Playing Animation */
+.playing-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  height: 16px;
+}
+
+.bar {
+  width: 3px;
+  background-color: var(--primary);
+  animation: equalize 1s infinite alternate;
+}
+
+.bar1 { animation-delay: 0s; height: 10px; }
+.bar2 { animation-delay: 0.3s; height: 16px; }
+.bar3 { animation-delay: 0.6s; height: 6px; }
+
+@keyframes equalize {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}

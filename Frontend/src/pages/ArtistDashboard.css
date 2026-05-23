@@ -1,0 +1,145 @@
+.artist-dashboard {
+  padding-bottom: 100px;
+}
+
+.dashboard-header {
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.dashboard-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 500px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn.active {
+  background-color: var(--text-main);
+  color: var(--bg-darker);
+}
+
+.dashboard-content {
+  padding: 32px;
+  max-width: 600px;
+}
+
+.dashboard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-form h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.dashboard-input {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.dashboard-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.file-input {
+  padding: 10px;
+}
+
+.file-input::-webkit-file-upload-button {
+  background-color: var(--bg-panel-hover);
+  color: var(--text-main);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 16px;
+  font-weight: 600;
+}
+
+.status-msg {
+  padding: 12px;
+  background-color: rgba(30, 215, 96, 0.1);
+  color: var(--primary);
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid rgba(30, 215, 96, 0.2);
+}
+
+.no-music-msg {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 16px 0;
+}
+
+.music-selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.music-select-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.music-select-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.music-select-item.selected {
+  background-color: rgba(30, 215, 96, 0.1);
+}
+
+.music-select-item input {
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+}

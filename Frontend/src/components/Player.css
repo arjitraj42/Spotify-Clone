@@ -1,0 +1,155 @@
+.player-container {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 100;
+}
+
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 30%;
+}
+
+.now-playing-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.placeholder-art {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1fdf64, #5EEAD4);
+}
+
+.track-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.track-name:hover {
+  text-decoration: underline;
+}
+
+.artist-name {
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.artist-name:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.player-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  max-width: 722px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.control-btn {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.control-btn:hover {
+  color: var(--text-main);
+}
+
+.play-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+.play-icon-fix {
+  margin-left: 2px;
+}
+
+.progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 40px;
+  text-align: center;
+}
+
+.progress-bar-wrapper, .volume-bar-wrapper {
+  flex: 1;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.progress-bar, .volume-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill, .volume-fill {
+  height: 100%;
+  background-color: var(--text-main);
+  border-radius: 2px;
+}
+
+.progress-bar-wrapper:hover .progress-fill,
+.volume-bar-wrapper:hover .volume-fill {
+  background-color: var(--primary);
+}
+
+.player-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 30%;
+}
+
+.volume-icon {
+  color: var(--text-muted);
+}
+
+.volume-bar-wrapper {
+  width: 93px;
+  flex: none;
+}

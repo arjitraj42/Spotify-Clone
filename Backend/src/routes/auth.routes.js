@@ -9,6 +9,12 @@ router.post("/register",authcontroller.registerUser)
 
 router.post("/login",authcontroller.loginUser)
 
+router.post("/login/otp-request", authcontroller.requestOtp)
+router.post("/login/otp-verify", authcontroller.verifyOtp)
+
 router.post("/logout", authcontroller.logoutUser)
+
+const authMiddleware = require("../middleware/auth.middleware");
+router.get("/me", authMiddleware.authUser, authcontroller.getMe)
 
 module.exports = router
