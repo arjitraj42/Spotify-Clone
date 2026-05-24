@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Play } from 'lucide-react';
 import axios from 'axios';
 import useStore from '../store/useStore';
+import { localAlbums, localMusic } from '../localData';
 import './Home.css';
 
 export default function Home() {
@@ -13,7 +14,18 @@ export default function Home() {
   const { isAuthenticated, setCurrentTrack, setIsPlaying } = useStore();
 
   useEffect(() => {
-    if (!isAuthenticated) return; // Don't fetch if not logged in
+    const formattedLocalAlbums = localAlbums.map(a => ({
+      _id: a._id,
+      name: a.title,
+      artist: a.artist.username,
+      coverUrl: a.coverUrl
+    }));
+
+    if (!isAuthenticated) {
+      setAlbums(formattedLocalAlbums);
+      setSuggestedMusic(localMusic);
+      return; 
+    }
 
     const fetchAlbumsAndMusic = async () => {
       try {
@@ -24,30 +36,23 @@ export default function Home() {
           artist: album.artist?.username || 'Unknown Artist',
           coverUrl: `https://picsum.photos/seed/${album._id}/300/300`
         }));
-        setAlbums(fetchedAlbums);
+        setAlbums([...formattedLocalAlbums, ...fetchedAlbums]);
 
         const musicResponse = await axios.get('/api/music/');
         const fetchedMusic = musicResponse.data.music.map((m) => ({
           ...m,
           coverUrl: `https://picsum.photos/seed/${m._id}/300/300` // Use deterministic image
         }));
-        setSuggestedMusic(fetchedMusic);
+        setSuggestedMusic([...localMusic, ...fetchedMusic]);
       } catch (err) {
         console.error('Failed to fetch dashboard data', err);
+        setAlbums(formattedLocalAlbums);
+        setSuggestedMusic(localMusic);
       }
     };
     
     fetchAlbumsAndMusic();
   }, [isAuthenticated]);
-
-  if (!isAuthenticated) {
-    return (
-      <div className="home-page animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-        <h2>Welcome to Spotify Clone</h2>
-        <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Please log in to listen to music and see albums.</p>
-      </div>
-    );
-  }
 
   return (
     <div className="home-page animate-fade-in">

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Play, Pause, Clock, Heart, Plus } from 'lucide-react';
 import axios from 'axios';
 import useStore from '../store/useStore';
+import { localAlbums, localMusic } from '../localData';
 import './AlbumView.css';
 
 export default function AlbumView() {
@@ -13,6 +14,21 @@ export default function AlbumView() {
 
   useEffect(() => {
     const fetchAlbum = async () => {
+      if (albumId.startsWith('local_')) {
+        const localAlbum = localAlbums.find(a => a._id === albumId);
+        if (localAlbum) {
+          setAlbum({
+            ...localAlbum,
+            music: localMusic.filter(m => m.albumId === albumId)
+          });
+        }
+        try {
+          const playlistRes = await axios.get('/api/playlist/my');
+          setMyPlaylists(playlistRes.data.playlists);
+        } catch (e) {}
+        return;
+      }
+
       try {
         const response = await axios.get(`/api/music/album/${albumId}`);
         setAlbum(response.data.album);
