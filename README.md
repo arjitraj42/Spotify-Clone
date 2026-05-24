@@ -162,15 +162,12 @@ Add your screenshots here.
 ## Frontend
 Deploy using:
 - Vercel
-- Netlify
+
 
 ## Backend
 Deploy using:
 - Render
-- Railway
-- VPS
 
----
 
 # 📦 Available Scripts
 
